@@ -5,6 +5,7 @@
 
 import SwiftUI
 
+//represents the slot machine logo view of our app
 struct LogoView: View {
   var body: some View {
     Image("gfx-slot-machine")

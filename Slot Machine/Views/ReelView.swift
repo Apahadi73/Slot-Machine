@@ -5,6 +5,7 @@
 
 import SwiftUI
 
+// represents background reel for the game reels and spin button
 struct ReelView: View {
   var body: some View {
     Image("gfx-reel")

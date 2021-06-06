@@ -457,7 +457,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.amirpahadi.com.Slot-Machine";
+				PRODUCT_BUNDLE_IDENTIFIER = com.amirpahadi.com.slotmachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -480,7 +480,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.amirpahadi.com.Slot-Machine";
+				PRODUCT_BUNDLE_IDENTIFIER = com.amirpahadi.com.slotmachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -496,7 +496,7 @@
 				DEVELOPMENT_TEAM = RC4896G7US;
 				INFOPLIST_FILE = "Slot Machine Stickers/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.amirpahadi.com.Slot-Machine";
+				PRODUCT_BUNDLE_IDENTIFIER = com.amirpahadi.com.slotmachine.sticker;
 				PRODUCT_NAME = "Slot Machine";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -511,7 +511,7 @@
 				DEVELOPMENT_TEAM = RC4896G7US;
 				INFOPLIST_FILE = "Slot Machine Stickers/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.amirpahadi.com.Slot-Machine";
+				PRODUCT_BUNDLE_IDENTIFIER = com.amirpahadi.com.slotmachine.sticker;
 				PRODUCT_NAME = "Slot Machine";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

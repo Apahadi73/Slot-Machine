@@ -5,6 +5,7 @@
 
 import SwiftUI
 
+// places shadow on the view
 struct ShadowModifier: ViewModifier {
   func body(content: Content) -> some View {
     content
@@ -12,6 +13,7 @@ struct ShadowModifier: ViewModifier {
   }
 }
 
+// changes font and accent color to title and white respectively
 struct ButtonModifier: ViewModifier {
   func body(content: Content) -> some View {
     content
@@ -41,6 +43,7 @@ struct ScoreContainerModifier: ViewModifier {
   }
 }
 
+// we use this modifier for the reelview
 struct ImageModifier: ViewModifier {
   func body(content: Content) -> some View {
     content
