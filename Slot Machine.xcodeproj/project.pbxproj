@@ -29,6 +29,9 @@
 		3A7CA926243BB43600876296 /* Slot Machine.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3A7CA91F243BB43100876296 /* Slot Machine.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3A887C3824252AFE00671B9E /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A887C3724252AFE00671B9E /* InfoView.swift */; };
 		3AB697B72436BE5E001F5B41 /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB697B62436BE5E001F5B41 /* PlaySound.swift */; };
+		7F24C988266D79A6006D1303 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7F24C987266D79A6006D1303 /* README.md */; };
+		7F24C989266D79A6006D1303 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7F24C987266D79A6006D1303 /* README.md */; };
+		7F24C98B266D7DDA006D1303 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F24C98A266D7DDA006D1303 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,8 @@
 		3A7CA923243BB43600876296 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A887C3724252AFE00671B9E /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		3AB697B62436BE5E001F5B41 /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
+		7F24C987266D79A6006D1303 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7F24C98A266D7DDA006D1303 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +103,7 @@
 		3A7A405F241BB248009B030F = {
 			isa = PBXGroup;
 			children = (
+				7F24C987266D79A6006D1303 /* README.md */,
 				3A7A406A241BB248009B030F /* Slot Machine */,
 				3A7CA920243BB43100876296 /* Slot Machine Stickers */,
 				3A7A4069241BB248009B030F /* Products */,
@@ -126,6 +132,7 @@
 				3A7A4076241BB24B009B030F /* LaunchScreen.storyboard */,
 				3A7A4079241BB24B009B030F /* Info.plist */,
 				3A7A4073241BB24B009B030F /* Preview Content */,
+				7F24C98A266D7DDA006D1303 /* Constants.swift */,
 			);
 			path = "Slot Machine";
 			sourceTree = "<group>";
@@ -268,6 +275,7 @@
 				3A7A408A241BB5E5009B030F /* chimeup.mp3 in Resources */,
 				3A7A4089241BB5E5009B030F /* spin.mp3 in Resources */,
 				3A7A4075241BB24B009B030F /* Preview Assets.xcassets in Resources */,
+				7F24C988266D79A6006D1303 /* README.md in Resources */,
 				3A7A408E241BB5E5009B030F /* game-over.mp3 in Resources */,
 				3A7A408B241BB5E5009B030F /* high-score.mp3 in Resources */,
 				3A7A4072241BB24B009B030F /* Assets.xcassets in Resources */,
@@ -280,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F24C989266D79A6006D1303 /* README.md in Resources */,
 				3A7CA922243BB43600876296 /* Stickers.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +305,7 @@
 				3A7A406C241BB248009B030F /* AppDelegate.swift in Sources */,
 				3A569B31241E4F7100032DA0 /* Extensions.swift in Sources */,
 				3A569B2D241E40D600032DA0 /* LogoView.swift in Sources */,
+				7F24C98B266D7DDA006D1303 /* Constants.swift in Sources */,
 				3A7A406E241BB248009B030F /* SceneDelegate.swift in Sources */,
 				3A5507D0242257FB0008F879 /* ReelView.swift in Sources */,
 				3A7A4070241BB248009B030F /* ContentView.swift in Sources */,

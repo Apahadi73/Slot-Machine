@@ -7,26 +7,26 @@ import SwiftUI
 struct ContentView: View {
   // MARK: - PROPERTIES
   
-  let symbols = ["gfx-bell", "gfx-cherry", "gfx-coin", "gfx-grape", "gfx-seven", "gfx-strawberry"]
+  let symbols = Constants.PLAY_ICONS
   let haptics = UINotificationFeedbackGenerator()
   
+//    we store highscore as persistant data using userdefaults across user session
   @State private var highscore: Int = UserDefaults.standard.integer(forKey: "HighScore")
-  @State private var coins: Int = 100
-  @State private var betAmount: Int = 10
+  @State private var coins: Int = Constants.INITIAL_COINS
+  @State private var betAmount: Int = Constants.FIRST_BET
   @State private var reels: Array = [0, 1, 2]
   @State private var showingInfoView: Bool = false
-  @State private var isActiveBet10: Bool = true
-  @State private var isActiveBet20: Bool = false
+  @State private var isFirstBetActive: Bool = true
+  @State private var isSecondBetActive: Bool = false
   @State private var showingModal: Bool = false
   @State private var animatingSymbol: Bool = false
   @State private var animatingModal: Bool = false
   
   // MARK: - FUNCTIONS
   
+//    spin reels whenever user press spin button
   func spinReels() {
-    // reels[0] = Int.random(in: 0...symbols.count - 1)
-    // reels[1] = Int.random(in: 0...symbols.count - 1)
-    // reels[2] = Int.random(in: 0...symbols.count - 1)
+//    returns the array with three random int elements
     reels = reels.map({ _ in
       Int.random(in: 0...symbols.count - 1)
     })
@@ -34,6 +34,8 @@ struct ContentView: View {
     haptics.notificationOccurred(.success)
   }
   
+    
+//    checks whether user won the game or not
   func checkWinning() {
     if reels[0] == reels[1] && reels[1] == reels[2] && reels[0] == reels[2] {
       // PLAYER WINS
@@ -51,36 +53,42 @@ struct ContentView: View {
     }
   }
   
+// if all three reels matches, add  10 times the bet amount (10 or 20) to the total coins the player have
   func playerWins() {
     coins += betAmount * 10
   }
   
+// stores high score of the user in the app userdefault
   func newHighScore() {
     highscore = coins
     UserDefaults.standard.set(highscore, forKey: "HighScore")
     playSound(sound: "high-score", type: "mp3")
   }
   
+//  subtracts bet amount from the player's current total coin
   func playerLoses() {
     coins -= betAmount
   }
   
-  func activateBet20() {
-    betAmount = 20
-    isActiveBet20 = true
-    isActiveBet10 = false
+//    swicthed bet to the first bet amount
+  func activateSecondBetAmount() {
+    betAmount = Constants.SECOND_BET
+    isFirstBetActive = true
+    isSecondBetActive = false
     playSound(sound: "casino-chips", type: "mp3")
     haptics.notificationOccurred(.success)
   }
   
-  func activateBet10() {
-    betAmount = 10
-    isActiveBet10 = true
-    isActiveBet20 = false
+    //    swicthed bet to the second bet amount
+  func activateFirstBetAmount() {
+    betAmount = Constants.FIRST_BET
+    isSecondBetActive = true
+    isFirstBetActive = false
     playSound(sound: "casino-chips", type: "mp3")
     haptics.notificationOccurred(.success)
   }
   
+//    shows game over modal
   func isGameOver() {
     if coins <= 0 {
       showingModal = true
@@ -88,11 +96,12 @@ struct ContentView: View {
     }
   }
   
+//    reset the current game to new
   func resetGame() {
     UserDefaults.standard.set(0, forKey: "HighScore")
     highscore = 0
-    coins = 100
-    activateBet10()
+    coins = Constants.INITIAL_COINS
+    activateFirstBetAmount()
     playSound(sound: "chimeup", type: "mp3")
   }
   
@@ -230,41 +239,41 @@ struct ContentView: View {
         
         HStack {
           
-          // MARK: - BET 20
+          // MARK: - First Bet Amount
           HStack(alignment: .center, spacing: 10) {
             Button(action: {
-              self.activateBet20()
+              self.activateFirstBetAmount()
             }) {
-              Text("20")
+                Text("\(Constants.FIRST_BET)")
                 .fontWeight(.heavy)
-                .foregroundColor(isActiveBet20 ? Color("ColorYellow") : Color.white)
+                .foregroundColor(isSecondBetActive ? Color("ColorYellow") : Color.white)
                 .modifier(BetNumberModifier())
             }
             .modifier(BetCapsuleModifier())
             
             Image("gfx-casino-chips")
               .resizable()
-              .offset(x: isActiveBet20 ? 0 : 20)
-              .opacity(isActiveBet20 ? 1 : 0)
+              .offset(x: isSecondBetActive ? 0 : 20)
+              .opacity(isSecondBetActive ? 1 : 0)
               .modifier(CasinoChipsModifier())
           }
           
           Spacer()
           
-          // MARK: - BET 10
+          // MARK: - Second Bet Amount
           HStack(alignment: .center, spacing: 10) {
             Image("gfx-casino-chips")
               .resizable()
-              .offset(x: isActiveBet10 ? 0 : -20)
-              .opacity(isActiveBet10 ? 1 : 0)
+              .offset(x: isFirstBetActive ? 0 : -20)
+              .opacity(isFirstBetActive ? 1 : 0)
               .modifier(CasinoChipsModifier())
             
             Button(action: {
-              self.activateBet10()
+              self.activateSecondBetAmount()
             }) {
-              Text("10")
+                Text("\(Constants.SECOND_BET)")
                 .fontWeight(.heavy)
-                .foregroundColor(isActiveBet10 ? Color("ColorYellow") : Color.white)
+                .foregroundColor(isFirstBetActive ? Color("ColorYellow") : Color.white)
                 .modifier(BetNumberModifier())
             }
             .modifier(BetCapsuleModifier())
@@ -296,6 +305,7 @@ struct ContentView: View {
       )
       .padding()
       .frame(maxWidth: 720)
+//      blurs the background when the modal for new games appears
       .blur(radius: $showingModal.wrappedValue ? 5 : 0, opaque: false)
       
       // MARK: - POPUP
@@ -333,8 +343,8 @@ struct ContentView: View {
               Button(action: {
                 self.showingModal = false
                 self.animatingModal = false
-                self.activateBet10()
-                self.coins = 100
+                self.activateFirstBetAmount()
+                self.coins = Constants.INITIAL_COINS
               }) {
                 Text("New Game".uppercased())
                   .font(.system(.body, design: .rounded))
@@ -367,6 +377,7 @@ struct ContentView: View {
       }
       
     } // ZStack
+//    manages the modal for the InfoView
     .sheet(isPresented: $showingInfoView) {
       InfoView()
     }

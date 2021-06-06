@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+//represents the information related to the slot machine application
 struct InfoView: View {
   @Environment(\.presentationMode) var presentationMode
   
@@ -20,7 +21,7 @@ struct InfoView: View {
           FormRowView(firstItem: "Developer", secondItem: "Amir Pahadi")
           FormRowView(firstItem: "Designer", secondItem: "Amir Pahadi")
           FormRowView(firstItem: "Music", secondItem: "Dan Lebowitz")
-          FormRowView(firstItem: "Copyright", secondItem: "© All rights reserved.")
+          FormRowView(firstItem: "Copyright", secondItem: "©2021 All rights reserved.")
           FormRowView(firstItem: "Version", secondItem: "1.0.1")
         }
       }
@@ -46,6 +47,7 @@ struct InfoView: View {
   }
 }
 
+// our customized form row view for the application info
 struct FormRowView: View {
   var firstItem: String
   var secondItem: String
